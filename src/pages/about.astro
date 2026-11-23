@@ -33,8 +33,13 @@ import { SITE, url } from '../consts';
 
         <h2>联系</h2>
         <p>
-          GitHub：<a href={SITE.github} target="_blank" rel="noopener">{SITE.github.replace('https://', '')}</a><br />
-          邮箱：{SITE.email}
+          GitHub：<a href={SITE.github} target="_blank" rel="noopener">{SITE.github.replace('https://', '')}</a>
+          {SITE.email && (
+            <>
+              <br />
+              邮箱：{SITE.email}
+            </>
+          )}
         </p>
         <p style="color: var(--muted); font-size: 14px;">
           站点用 Astro 构建、托管在 GitHub Pages，无后端、无追踪脚本。

@@ -17,8 +17,8 @@ export const SITE = {
     '一个工业物联网与全栈工程的技术笔记：OPC UA / Modbus 协议调试、.NET 采集服务、Vue3 前端性能与现场问题复盘。',
   author: '王梦宇',
   initials: 'WM',
-  github: 'https://github.com/example',
-  email: 'hello@example.com',
+  github: 'https://github.com/18519811190',
+  email: '',
 };
 
 export const NAV = [
