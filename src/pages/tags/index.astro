@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTags, getPosts } from '../../lib/posts';
+import { url } from '../../consts';
+
+const tags = await getTags();
+const posts = await getPosts();
+---
+<BaseLayout title="标签" description="按标签浏览全部技术笔记。">
+  <div class="wrap">
+    <section class="hero" style="padding: 68px 0 36px;">
+      <h1 style="font-size: clamp(30px, 4vw, 54px);">标签</h1>
+      <p class="sub">{tags.length} 个标签 · {posts.length} 篇文章</p>
+      <p class="latin">topics</p>
+    </section>
+
+    <div class="tags" style="gap: 12px;">
+      {
+        tags.map(({ tag, count }) => (
+          <a class="tag" href={url(`/tags/${encodeURIComponent(tag)}`)} style="font-size: 12px; padding: 7px 12px;">
+            {tag} <span style="color: var(--muted);">({count})</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>

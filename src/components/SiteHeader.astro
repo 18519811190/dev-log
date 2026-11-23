@@ -1,0 +1,25 @@
+---
+import { SITE, NAV, url } from '../consts';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const path = Astro.url.pathname.replace(base, '') || '/';
+---
+<header class="site-header">
+  <div class="wrap inner">
+    <a class="brand" href={url('/')}>{SITE.brand}</a>
+    <nav class="nav" aria-label="主导航">
+      {
+        NAV.map((item, i) => (
+          <a
+            href={url(item.href)}
+            class={i === 1 || i === 2 ? 'hide-sm' : undefined}
+            aria-current={path.startsWith(item.href) ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a class="rss-btn" href={url('/rss.xml')}>RSS</a>
+    </nav>
+  </div>
+</header>

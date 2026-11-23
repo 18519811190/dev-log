@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE, url } from '../consts';
+---
+<BaseLayout title="关于" description={`关于 ${SITE.author} 与这个博客。`}>
+  <div class="wrap">
+    <section class="hero" style="padding: 68px 0 20px;">
+      <h1 style="font-size: clamp(30px, 4vw, 54px);">关于</h1>
+      <p class="sub">{SITE.author} · 全栈架构师 · 北京</p>
+      <p class="latin">whoami</p>
+    </section>
+
+    <div class="post-layout" style="padding-top: 20px;">
+      <div class="prose">
+        <p>
+          我在工业物联网项目里做全栈：后端是 .NET / C#，前端是 Vue3，中间是各种不太听话的设备和协议。
+          这个博客用来记录现场排障的过程——那些花了两天定位、最后发现只是一个命名空间索引写错的问题。
+        </p>
+
+        <h2>技术栈</h2>
+        <ul>
+          <li>后端：.NET / ASP.NET Core、C#、SQLite、SQL Server、Quartz、Topshelf</li>
+          <li>协议：OPC UA / OPC DA、Modbus RTU / TCP、Siemens S7、罗克韦尔、PLC 采集</li>
+          <li>前端：Vue3、TypeScript、Three.js、微信小程序</li>
+          <li>工程：Git、Docker、GitHub Actions、Linux / Windows 服务部署</li>
+        </ul>
+
+        <h2>写什么</h2>
+        <p>
+          主要写三类：协议与设备联调的实际报错和定位路径；采集服务、报警状态机这类后端架构的取舍；
+          以及前端在真实工业场景里的性能与适配问题。不写通稿，只写自己踩过并且验证过的东西。
+        </p>
+
+        <h2>联系</h2>
+        <p>
+          GitHub：<a href={SITE.github} target="_blank" rel="noopener">{SITE.github.replace('https://', '')}</a><br />
+          邮箱：{SITE.email}
+        </p>
+        <p style="color: var(--muted); font-size: 14px;">
+          站点用 Astro 构建、托管在 GitHub Pages，无后端、无追踪脚本。
+        </p>
+      </div>
+      <aside class="toc">
+        <span class="label">SITEMAP</span>
+        <a href={url('/notes')}>全部文章</a>
+        <a href={url('/tags')}>标签</a>
+        <a href={url('/projects')}>项目</a>
+        <a href={url('/rss.xml')}>RSS</a>
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

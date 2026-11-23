@@ -1,0 +1,29 @@
+---
+import type { Post } from '../lib/posts';
+import { formatDate, readingTime } from '../lib/posts';
+import { url } from '../consts';
+
+interface Props {
+  post: Post;
+  showDesc?: boolean;
+}
+
+const { post, showDesc = true } = Astro.props;
+const href = url(`/notes/${post.id}`);
+---
+<a class="card" href={href}>
+  <div class="meta">
+    {formatDate(post.data.pubDate)} · {readingTime(post.body)} min
+  </div>
+  <h3>{post.data.title}</h3>
+  {showDesc && <p class="desc">{post.data.description}</p>}
+  {
+    post.data.tags.length > 0 && (
+      <div class="tags">
+        {post.data.tags.map((t) => (
+          <span class="tag">{t}</span>
+        ))}
+      </div>
+    )
+  }
+</a>

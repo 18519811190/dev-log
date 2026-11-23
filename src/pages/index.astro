@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getPosts } from '../lib/posts';
+import { SITE, url } from '../consts';
+
+const posts = await getPosts();
+const latest = posts.slice(0, 6);
+---
+<BaseLayout>
+  <section class="hero">
+    <div class="wrap">
+      <h1>{SITE.tagline}</h1>
+      <p class="sub">{SITE.subtitle}</p>
+      <p class="latin">{SITE.latin}</p>
+      <div class="mark" aria-hidden="true">
+        <div class="ring"></div>
+        <div class="dot">{SITE.initials}</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-bottom: 24px;">
+    <div class="section-head">
+      <h2>最新文章</h2>
+      <a class="more" href={url('/notes')} aria-label="查看全部文章">→</a>
+    </div>
+    <div class="cards">
+      {latest.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+</BaseLayout>
